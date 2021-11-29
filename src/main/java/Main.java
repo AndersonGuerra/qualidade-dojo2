@@ -15,7 +15,7 @@ public class Main {
         System.out.println("Loja XPTO online \n\n");
         System.out.println("Logado como: Operdador Teste\n\n");
         while (opcao != 6) {
-            System.out.println("Pressione:\n 1 - Adicionar produtos\n\t2 - Excluir Produtos\n\t3 - Exibir produtos\n\t4 - Procurar produto\n\t5 - Atualizar\n\t6 - Sair\nopcao: \nopcao: ");
+            System.out.println("Pressione:\n 1 - Adicionar produtos\n\t2 - Excluir Produtos\n\t3 - Exibir produtos\n\t4 - Procurar produto\n\t5 - Atualizar\n\t6 - Sair\nopcao: ");
             opcao = in.nextByte();
             switch (opcao) {
                 case 1:

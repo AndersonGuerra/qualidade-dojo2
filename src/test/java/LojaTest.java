@@ -32,13 +32,6 @@ class LojaTest {
 
     @Test
     void mostraProdutos() {
-        Loja l = new Loja();
-        Produto p = new Produto("Produto 1", 10, 15);
-        Produto p2 = new Produto("Produto 2", 32, 178);
-        l.addProduto(p);
-        l.addProduto(p2);
-        // VERIFICA SE A LOJA TEM 2 PRODUTOS
-        assertEquals(2, l.Quantidade());
     }
 
     @Test
@@ -56,5 +49,13 @@ class LojaTest {
 
     @Test
     void listaTudo() {
+        Loja l = new Loja();
+        Produto p = new Produto("Produto 1", 10, 15);
+        Produto p2 = new Produto("Produto 2", 32, 178);
+        l.addProduto(p);
+        l.addProduto(p2);
+        assertNotNull(l.produtos);
+        // VERIFICA SE A LOJA TEM 2 PRODUTOS
+        assertEquals(2, l.Quantidade());
     }
 }

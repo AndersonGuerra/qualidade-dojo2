@@ -16,9 +16,9 @@ public class Loja {
     }
 
     /*
-    *   MUDANÇA NO CÓDIGO:
-    *   USO DO MÉTODO Busca PARA ACHAR O PRODUTO A SER REMOVIDO
-    */
+     *   MUDANÇA NO CÓDIGO:
+     *   USO DO MÉTODO Busca PARA ACHAR O PRODUTO A SER REMOVIDO
+     */
     public boolean RemoveProduto(String nomeProduto) throws NotFound {
         Produto p = this.Busca(nomeProduto);
         if (p != null) {
@@ -29,9 +29,9 @@ public class Loja {
     }
 
     /*
-    *   MUDANÇA NO CÓDIGO:
-    *   USO DO MÉTODO Busca PARA IDENTIFICAR O PRODUTO
-    */
+     *   MUDANÇA NO CÓDIGO:
+     *   USO DO MÉTODO Busca PARA IDENTIFICAR O PRODUTO
+     */
     public boolean MostraProdutos(String nome) throws NotFound {
         Produto p = this.Busca(nome);
         if (p != null) {
@@ -57,10 +57,13 @@ public class Loja {
     }
 
     public void ListaTudo() {
-        for (Produto p : this.produtos) {
-            System.out.println(p);
+        if (this.Quantidade() > 0) {
+            for (Produto p : this.produtos) {
+                System.out.println(p);
+            }
+        } else {
+            System.out.println("Nenhum produto cadastrado.\n");
         }
-        System.out.println();
     }
 
 }
