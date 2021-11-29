@@ -16,27 +16,24 @@ public class Loja {
         this.produtos.add(produto);
     }
 
-    /*
-     *   MUDANÇA NO CÓDIGO:
-     *   USO DO MÉTODO Busca PARA ACHAR O PRODUTO A SER REMOVIDO
-     */
+
+//    MUDANÇA NO CÓDIGO:
+//    USO DO MÉTODO Busca PARA ACHAR O PRODUTO A SER REMOVIDO
     public boolean RemoveProduto(String nomeProduto) throws NotFound {
-        Produto p = this.Busca(nomeProduto);
-        if (p != null) {
-            this.produtos.remove(p);
+        Produto produto = this.Busca(nomeProduto);
+        if (produto != null) {
+            this.produtos.remove(produto);
             return true;
         }
         throw new NotFound();
     }
 
-    /*
-     *   MUDANÇA NO CÓDIGO:
-     *   USO DO MÉTODO Busca PARA IDENTIFICAR O PRODUTO
-     */
+//    MUDANÇA NO CÓDIGO:
+//    USO DO MÉTODO Busca PARA IDENTIFICAR O PRODUTO
     public boolean MostraProdutos(String nome) throws NotFound {
-        Produto p = this.Busca(nome);
-        if (p != null) {
-            System.out.println(p);
+        Produto produto = this.Busca(nome);
+        if (produto != null) {
+            System.out.println(produto);
             return true;
         }
         throw new NotFound();
@@ -47,11 +44,11 @@ public class Loja {
     }
 
     // MUDANÇA DO CÓDIGO:
-    // O MÉTODO Busca AGORA RETORNA UM PRODUTO OU NULL
+    // O MÉTODO Busca AGORA RETORNA UM Produto OU null
     public Produto Busca(String nomeProduto) throws NotFound {
-        for (Produto p : this.produtos) {
-            if (p.getName().equals(nomeProduto)) {
-                return p;
+        for (Produto produto : this.produtos) {
+            if (produto.getName().equals(nomeProduto.toLowerCase())) {
+                return produto;
             }
         }
         throw new NotFound();
@@ -59,8 +56,8 @@ public class Loja {
 
     public void ListaTudo() {
         if (this.Quantidade() > 0) {
-            for (Produto p : this.produtos) {
-                System.out.println(p);
+            for (Produto produto : this.produtos) {
+                System.out.println(produto);
             }
         } else {
             System.out.println("Nenhum produto cadastrado.\n");
@@ -68,23 +65,23 @@ public class Loja {
     }
 
     public boolean AtualizaProduto(String nomeProduto) throws NotFound {
-        Produto p = this.Busca(nomeProduto);
+        Produto produto = this.Busca(nomeProduto);
         Scanner in = new Scanner(System.in);
-        if (p != null) {
+        if (produto != null) {
             System.out.println("Insira o novo nome para o produto: ");
             String nome = in.nextLine();
             if (!nome.isEmpty()) {
-                p.setName(nome);
+                produto.setName(nome.toLowerCase());
             }
             System.out.println("Insira o novo nome para o preço: ");
             float preco = in.nextFloat();
-            if (preco != p.getPreco()) {
-                p.setPreco(preco);
+            if (preco != produto.getPreco()) {
+                produto.setPreco(preco);
             }
             System.out.println("Insira o novo nome para o quantidade: ");
             int qtd = in.nextInt();
-            if (qtd != p.getQuant()) {
-                p.setQuant(qtd);
+            if (qtd != produto.getQuant()) {
+                produto.setQuant(qtd);
             }
             return true;
         }

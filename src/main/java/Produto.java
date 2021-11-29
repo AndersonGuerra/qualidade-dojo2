@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Produto {
 
     protected String nome;
@@ -10,7 +12,8 @@ public class Produto {
 
     public Produto(String nome, int quantidade, float preco) {
         super();
-        this.nome = nome;
+        // PRODUTO É CADASTRADO COM O nome EM lowerCase()
+        this.nome = nome.toLowerCase();
         this.quant = quantidade;
         this.preco = preco;
     }
@@ -42,7 +45,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Nome do Produto =" + nome + "\nquantidade=" + quant + "\npreco=" + preco + "]";
+        // MELHORIAS NA EXIBIÇÃO
+        return "Nome do Produto = " + nome + "\nQuantidade = " + quant + "\nPreço = " + preco;
     }
 
 

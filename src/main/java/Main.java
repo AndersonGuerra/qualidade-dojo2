@@ -2,6 +2,17 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.util.Scanner;
 
+//CUMPRIDOS:
+//* Casos de teste:
+//    - Adicionar produto
+//    - Realizar remoção de produto
+//    - Verificar lista de todos os produtos
+//    - Encontrar produto específico
+//    - Verificar exceção de produto não encontrado
+//* Correção de defeitos no código
+//* Nova funcionalidade (atualizar produto)
+//* Realizar refatoraçõs
+
 
 public class Main {
     public static void main(String[] args) throws NotFound {
@@ -15,7 +26,9 @@ public class Main {
         System.out.println("Loja XPTO online \n\n");
         System.out.println("Logado como: Operdador Teste\n\n");
         while (opcao != 6) {
-            System.out.println("Pressione:\n 1 - Adicionar produtos\n\t2 - Excluir Produtos\n\t3 - Exibir produtos\n\t4 - Procurar produto\n\t5 - Atualizar\n\t6 - Sair\nopcao: ");
+            // CORREÇÃO DA OPÇÃO DE SAIR DO PROGRAMA:
+            // ANTES O PROGRAMA EXECUTAVA ETERNAMENTE, AGORA ELE SAI :D
+            System.out.println("Pressione:\n\t1 - Adicionar produtos\n\t2 - Excluir Produtos\n\t3 - Exibir produtos\n\t4 - Procurar produto\n\t5 - Atualizar produto\n\t6 - Sair\nopcao: ");
             opcao = in.nextByte();
             switch (opcao) {
                 case 1:
@@ -23,7 +36,9 @@ public class Main {
                     int quantidade;
                     float preco;
                     System.out.println("Nome do Produto a ser Adicionado: ");
-                    nome = in.next();
+                    // TODOS OS PRODUTOS AGORA SÃO CADASTRADOS COM lowerCase()
+                    // PARA FINS DE UNIFORMIDADE
+                    nome = in.next().toLowerCase();
                     System.out.println("Quantidade do produto:");
                     quantidade = in.nextInt();
                     System.out.println("Preco unitario: ");
@@ -34,7 +49,10 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Nome do Produto a ser Removido: ");
-                    nomeProduto = in.next();
+                    // TODOS OS PRODUTOS AGORA SÃO BUSCADOS COM lowerCase()
+                    // PARA FINS DE UNIFORMIDADE
+                    nomeProduto = in.next().toLowerCase();
+                    // ADEQUAÇÃO DO IF PARA NOVA IMPLEMENTAÇÃO DO MÉTODO loja.Busca
                     if (loja.Busca(nomeProduto) != null) {
                         System.out.println("\n (y/n) Realmente deseja remover esse produto?" + nomeProduto);
                         confirm = in.next();
@@ -56,7 +74,10 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Qual o nome do produto a ser buscado: ");
-                    nomeProduto = in.next();
+                    // TODOS OS PRODUTOS AGORA SÃO BUSCADOS COM lowerCase()
+                    // PARA FINS DE UNIFORMIDADE
+                    nomeProduto = in.next().toLowerCase();
+                    // ADEQUAÇÃO DO IF PARA NOVA IMPLEMENTAÇÃO DO MÉTODO loja.Busca
                     if (loja.Busca(nomeProduto) != null) {
                         System.out.println("Produto" + nomeProduto + "encontrado");
                         loja.MostraProdutos(nomeProduto);
@@ -66,7 +87,9 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Qual o nome do produto a ser atualizado: ");
-                    nomeProduto = in.next();
+                    // TODOS OS PRODUTOS AGORA SÃO BUSCADOS COM lowerCase()
+                    // PARA FINS DE UNIFORMIDADE
+                    nomeProduto = in.next().toLowerCase();
                     loja.AtualizaProduto(nomeProduto);
                     break;
             }
