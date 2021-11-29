@@ -64,6 +64,11 @@ public class Main {
                         System.out.println("Produto" + nomeProduto + "n�o encontado");
                     }
                     break;
+                case 5:
+                    System.out.println("Qual o nome do produto a ser atualizado: ");
+                    nomeProduto = in.next();
+                    loja.AtualizaProduto(nomeProduto);
+                    break;
             }
         }
     }

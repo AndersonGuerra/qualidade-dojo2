@@ -2,6 +2,7 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Loja {
@@ -64,6 +65,30 @@ public class Loja {
         } else {
             System.out.println("Nenhum produto cadastrado.\n");
         }
+    }
+
+    public boolean AtualizaProduto(String nomeProduto) throws NotFound {
+        Produto p = this.Busca(nomeProduto);
+        Scanner in = new Scanner(System.in);
+        if (p != null) {
+            System.out.println("Insira o novo nome para o produto: ");
+            String nome = in.nextLine();
+            if (!nome.isEmpty()) {
+                p.setName(nome);
+            }
+            System.out.println("Insira o novo nome para o preço: ");
+            float preco = in.nextFloat();
+            if (preco != p.getPreco()) {
+                p.setPreco(preco);
+            }
+            System.out.println("Insira o novo nome para o quantidade: ");
+            int qtd = in.nextInt();
+            if (qtd != p.getQuant()) {
+                p.setQuant(qtd);
+            }
+            return true;
+        }
+        throw new NotFound();
     }
 
 }
