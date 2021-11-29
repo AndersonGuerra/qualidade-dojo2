@@ -79,10 +79,12 @@ public class Main {
                     nomeProduto = in.next().toLowerCase();
                     // ADEQUAÇÃO DO IF PARA NOVA IMPLEMENTAÇÃO DO MÉTODO loja.Busca
                     if (loja.Busca(nomeProduto) != null) {
-                        System.out.println("Produto" + nomeProduto + "encontrado");
+                        // MUDANÇA NO TEXTO DE EXIBIÇÃO
+                        System.out.println("Produto " + nomeProduto + " encontrado");
                         loja.MostraProdutos(nomeProduto);
                     } else {
-                        System.out.println("Produto" + nomeProduto + "n�o encontado");
+                        // MUDANÇA NO TEXTO DE EXIBIÇÃO
+                        System.out.println("Produto " + nomeProduto + "não encontado");
                     }
                     break;
                 case 5:
@@ -90,7 +92,16 @@ public class Main {
                     // TODOS OS PRODUTOS AGORA SÃO BUSCADOS COM lowerCase()
                     // PARA FINS DE UNIFORMIDADE
                     nomeProduto = in.next().toLowerCase();
-                    loja.AtualizaProduto(nomeProduto);
+                    Produto produto = loja.Busca(nomeProduto);
+                    if (produto != null) {
+                        System.out.println("Insira o novo nome para o produto: ");
+                        String nomeNovo = in.next();
+                        System.out.println("Insira o novo nome para o preço: ");
+                        float precoNovo = in.nextFloat();
+                        System.out.println("Insira o novo nome para o quantidade: ");
+                        int qtdNovo = in.nextInt();
+                        loja.AtualizaProduto(produto, nomeNovo, precoNovo, qtdNovo);
+                    }
                     break;
             }
         }

@@ -58,6 +58,7 @@ class LojaTest {
     void atualizaProduto() throws NotFound {
         Loja lojaTeste = new Loja();
         Produto produtoTeste1 = new Produto("Produto 1", 10, 15);
-        lojaTeste.AtualizaProduto(produtoTeste1.getName());
+        lojaTeste.addProduto(produtoTeste1);
+        assertEquals(true, lojaTeste.AtualizaProduto(produtoTeste1, "Produto nome novo", 15, 12));
     }
 }

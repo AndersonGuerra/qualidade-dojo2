@@ -17,7 +17,7 @@ public class Loja {
     }
 
 
-//    MUDANÇA NO CÓDIGO:
+    //    MUDANÇA NO CÓDIGO:
 //    USO DO MÉTODO Busca PARA ACHAR O PRODUTO A SER REMOVIDO
     public boolean RemoveProduto(String nomeProduto) throws NotFound {
         Produto produto = this.Busca(nomeProduto);
@@ -28,7 +28,7 @@ public class Loja {
         throw new NotFound();
     }
 
-//    MUDANÇA NO CÓDIGO:
+    //    MUDANÇA NO CÓDIGO:
 //    USO DO MÉTODO Busca PARA IDENTIFICAR O PRODUTO
     public boolean MostraProdutos(String nome) throws NotFound {
         Produto produto = this.Busca(nome);
@@ -64,28 +64,14 @@ public class Loja {
         }
     }
 
-    public boolean AtualizaProduto(String nomeProduto) throws NotFound {
-        Produto produto = this.Busca(nomeProduto);
-        Scanner in = new Scanner(System.in);
+    public boolean AtualizaProduto(Produto produto, String nomeNovo, float precoNovo, int qtdNovo) throws NotFound {
         if (produto != null) {
-            System.out.println("Insira o novo nome para o produto: ");
-            String nome = in.nextLine();
-            if (!nome.isEmpty()) {
-                produto.setName(nome.toLowerCase());
-            }
-            System.out.println("Insira o novo nome para o preço: ");
-            float preco = in.nextFloat();
-            if (preco != produto.getPreco()) {
-                produto.setPreco(preco);
-            }
-            System.out.println("Insira o novo nome para o quantidade: ");
-            int qtd = in.nextInt();
-            if (qtd != produto.getQuant()) {
-                produto.setQuant(qtd);
-            }
+            produto.setName(nomeNovo);
+            produto.setPreco(precoNovo);
+            produto.setQuant(qtdNovo);
             return true;
+        } else {
+            throw new NotFound();
         }
-        throw new NotFound();
     }
-
 }
