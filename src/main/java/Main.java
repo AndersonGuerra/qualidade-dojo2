@@ -1,8 +1,10 @@
+import org.omg.CosNaming.NamingContextPackage.NotFound;
+
 import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotFound {
 
         Loja loja = new Loja();
         int opcao;
@@ -33,7 +35,7 @@ public class Main {
                 case 2:
                     System.out.println("Nome do Produto a ser Removido: ");
                     nomeProduto = in.next();
-                    if (loja.Busca(nomeProduto)) {
+                    if (loja.Busca(nomeProduto) != null) {
                         System.out.println("\n (y/n) Realmente deseja remover esse produto?" + nomeProduto);
                         confirm = in.next();
                         if (confirm.equals("y")) {
@@ -55,7 +57,7 @@ public class Main {
                 case 4:
                     System.out.println("Qual o nome do produto a ser buscado: ");
                     nomeProduto = in.next();
-                    if (loja.Busca(nomeProduto)) {
+                    if (loja.Busca(nomeProduto) != null) {
                         System.out.println("Produto" + nomeProduto + "encontrado");
                         loja.MostraProdutos(nomeProduto);
                     } else {
